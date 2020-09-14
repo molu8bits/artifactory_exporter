@@ -13,7 +13,7 @@ func (e *Exporter) exportReplications(ch chan<- prometheus.Metric) error {
 	if err != nil {
 		level.Error(e.logger).Log("msg", "Couldn't scrape Artifactory when fetching replications", "err", err)
 		e.totalAPIErrors.Inc()
-		return err
+		return nil
 	}
 	if len(replications) == 0 {
 		level.Debug(e.logger).Log("msg", "No replications stats found")
